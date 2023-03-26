@@ -43,11 +43,11 @@ def is_subsequence_second_variant(first_str: str, second_str: str) -> bool:
         return False
     if not first_str:
         return True
-    subsequence = 0
+    subsequence_counter = 0
     for char_in_second_str in second_str:
         if (
-            subsequence <= len(first_str) - 1
-            and first_str[subsequence] == char_in_second_str
+            subsequence_counter <= len(first_str) - 1
+            and first_str[subsequence_counter] == char_in_second_str
         ):
-            subsequence += 1
-    return subsequence == len(first_str)
+            subsequence_counter += 1
+    return subsequence_counter == len(first_str)

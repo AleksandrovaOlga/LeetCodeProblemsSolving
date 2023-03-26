@@ -21,13 +21,14 @@ def is_isomorphic(first_str: str, second_str: str) -> bool:
     :return: true if isomorphic else otherwise
     """
     # dictionary, which maps characters of first_str as keys and characters of second_str as values
-    dict_s_to_t = {}
+    dict_first_str_to_second_str = {}
+    # final word constructed from map
     constructed_word = ""
-    for character_from_first_str, letter_t in zip(first_str, second_str):
-        letter_s_value = dict_s_to_t.get(character_from_first_str)
-        if letter_s_value is None and letter_t not in dict_s_to_t.values():
-            dict_s_to_t[character_from_first_str] = letter_t
-        elif letter_s_value is None or letter_s_value != letter_t:
+    for character_from_first_str, character_from_second_str in zip(first_str, second_str):
+        char_from_first_str_value = dict_first_str_to_second_str.get(character_from_first_str)
+        if char_from_first_str_value is None and character_from_second_str not in dict_first_str_to_second_str.values():
+            dict_first_str_to_second_str[character_from_first_str] = character_from_second_str
+        elif char_from_first_str_value is None or char_from_first_str_value != character_from_second_str:
             return False
-        constructed_word += dict_s_to_t[character_from_first_str]
+        constructed_word += dict_first_str_to_second_str[character_from_first_str]
     return second_str == constructed_word
